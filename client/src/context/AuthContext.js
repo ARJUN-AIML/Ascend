@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useMemo } from 'react';
-import api, { fetchCsrfToken } from '../services/api';
+import api from '../services/api';
 
 export const AuthContext = createContext();
 
@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
 
     const initAuth = async () => {
       try {
-        await fetchCsrfToken();
         const res = await api.get('/api/auth/me');
         if (isMounted) setUser(res.data);
       } catch (err) {

@@ -9,16 +9,8 @@ const api = axios.create({
   withCredentials: true,
 });
 
-export const fetchCsrfToken = async () => {
-  try {
-    const { data } = await axios.get(`${api.defaults.baseURL}/api/csrf-token`, {
-      withCredentials: true,
-    });
-    api.defaults.headers.common['CSRF-Token'] = data.csrfToken;
-  } catch (err) {
-    if (process.env.NODE_ENV !== 'production') console.error('Failed to fetch CSRF token:', err);
-  }
-};
+// CSRF temporarily disabled for Vercel/Render cross-origin deployment
+// export const fetchCsrfToken = async () => { ... }
 
 // ── Request interceptor ───────────────────────────────────────────────────────
 api.interceptors.request.use((config) => {

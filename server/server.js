@@ -10,7 +10,7 @@ const connectDB = require('./config/db');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 const timeout = require('connect-timeout');
 const cookieParser = require('cookie-parser');
-const csurf = require('csurf');
+// const csurf = require('csurf'); // Disabled for cross-origin deployment
 
 const app = express();
 
@@ -45,21 +45,22 @@ app.use(cookieParser());
 // Health check (Bypass CSRF & Rate Limiters)
 app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok', env: process.env.NODE_ENV, timestamp: Date.now() }));
 
-const csrfProtection = csurf({ 
-  cookie: { 
-    httpOnly: true, 
-    secure: process.env.NODE_ENV === 'production', 
-    sameSite: 'strict' 
-  } 
-});
+// CSRF protection temporarily disabled for Vercel/Render deployment
+// const csrfProtection = csurf({ 
+//   cookie: { 
+//     httpOnly: true, 
+//     secure: process.env.NODE_ENV === 'production', 
+//     sameSite: 'strict' 
+//   } 
+// });
 
-// CSRF Token Endpoint
-app.get('/api/csrf-token', csrfProtection, (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
-});
+// // CSRF Token Endpoint
+// app.get('/api/csrf-token', csrfProtection, (req, res) => {
+//   res.json({ csrfToken: req.csrfToken() });
+// });
 
-// Apply CSRF to all API routes
-app.use('/api', csrfProtection);
+// // Apply CSRF to all API routes
+// app.use('/api', csrfProtection);
 
 // Rate Limiting
 const { authLimiter, apiLimiter, aiLimiter } = require('./middleware/rateLimiters');
