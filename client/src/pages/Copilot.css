@@ -1,0 +1,582 @@
+/* =========================================================
+   Copilot.css — Career Copilot 2.0 (Flagship Experience)
+   ========================================================= */
+
+.cp-page {
+  padding-top: var(--sp-48);
+  padding-bottom: var(--sp-64);
+  min-height: calc(100vh - 72px);
+}
+
+.cp-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #FCA5A5;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  margin-bottom: var(--sp-24);
+}
+
+/* ── LAYOUT ────────────────────────────────────────── */
+.cp-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sp-48);
+  align-items: flex-start;
+}
+
+/* ── PREMIUM STEPPER (Linear/Notion AI Style) ─────── */
+.cp-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.cp-stepper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.cp-step {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+  position: relative;
+  min-height: 64px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+
+.cp-step.active, .cp-step.completed {
+  opacity: 1;
+}
+
+.cp-step-indicator {
+  position: absolute;
+  left: -17.5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-main);
+  border: 2px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.cp-step-indicator svg {
+  width: 8px;
+  height: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cp-step.active .cp-step-indicator {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary);
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+}
+
+.cp-step.completed .cp-step-indicator {
+  border-color: #34D399;
+  background: #34D399;
+}
+
+.cp-step.completed .cp-step-indicator svg {
+  opacity: 1;
+  color: var(--bg-main);
+}
+
+.cp-step-title {
+  padding-left: var(--sp-24);
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+.cp-step.active .cp-step-title {
+  color: var(--text-primary);
+}
+
+/* ── MAIN WORKSPACE ────────────────────────────────── */
+.cp-main {
+  min-height: 500px;
+}
+
+.cp-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-32);
+}
+
+/* ── STEP 1: ANALYZE (Split Layout) ───────────────── */
+.cp-split-analyze {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--sp-48);
+}
+
+.cp-analyze-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cp-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  margin-top: var(--sp-24);
+}
+
+.cp-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cp-feature-icon {
+  color: var(--accent-primary);
+  margin-top: 2px;
+}
+
+.cp-analyze-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  background: var(--bg-card);
+  padding: var(--sp-32);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+}
+
+.cp-upload-zone {
+  border: 2px dashed rgba(255,255,255,0.15);
+  border-radius: var(--radius-12);
+  padding: var(--sp-32);
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.cp-upload-zone.has-file {
+  border-color: var(--accent-primary);
+  background: rgba(96, 165, 250, 0.05);
+}
+
+.cp-upload-zone:hover {
+  border-color: var(--accent-primary);
+  background: rgba(255,255,255,0.02);
+}
+
+.cp-textarea {
+  width: 100%;
+  height: 120px;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: var(--sp-16);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease;
+}
+
+.cp-textarea:focus {
+  border-color: var(--accent-primary);
+}
+
+/* ── STEP 1: COMPACT BENTO (Post-Analysis) ────────── */
+.cp-bento-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-24);
+}
+
+.cp-bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-16);
+}
+
+/* ── PREMIUM LOADING STAGES ────────────────────────── */
+.ai-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-64) 0;
+  gap: var(--sp-32);
+}
+
+.ai-loader-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.ai-loader-stages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  width: 100%;
+  max-width: 300px;
+}
+
+.ai-loader-stage {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.ai-loader-stage.active {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+.ai-loader-stage.completed {
+  color: #34D399;
+  opacity: 1;
+}
+
+/* ── STEP 2: DIAGNOSE (Split Layout) ──────────────── */
+.cp-split-diagnose {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-48);
+}
+
+.cp-diag-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-32);
+}
+
+.cp-diag-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.cp-diag-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.cp-issue-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: var(--sp-12) 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.05);
+}
+
+.cp-issue-item:last-child {
+  border-bottom: none;
+}
+
+.cp-issue-critical .cp-issue-icon { color: #F87171; }
+.cp-issue-moderate .cp-issue-icon { color: #FBBF24; }
+.cp-issue-minor .cp-issue-icon { color: #60A5FA; }
+.cp-issue-strength .cp-issue-icon { color: #34D399; }
+
+/* ── STEP 3: OPTIMIZE (Side-by-Side) ──────────────── */
+.cp-opt-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-32);
+}
+
+.cp-opt-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-24);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  overflow: hidden;
+}
+
+.cp-opt-col {
+  padding: var(--sp-24);
+  position: relative;
+}
+
+.cp-opt-col.original {
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-light);
+}
+
+.cp-opt-col.improved {
+  background: rgba(96, 165, 250, 0.05);
+}
+
+.cp-opt-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--sp-16);
+  color: var(--text-secondary);
+}
+
+.cp-opt-label.highlight { color: var(--accent-primary); }
+
+.cp-opt-meta {
+  display: flex;
+  gap: var(--sp-16);
+  margin-top: var(--sp-16);
+  padding-top: var(--sp-16);
+  border-top: 1px dashed rgba(255,255,255,0.1);
+}
+
+.cp-opt-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.cp-opt-tag.high { background: rgba(16, 185, 129, 0.1); color: #10B981; }
+
+.cp-copy-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cp-copy-btn:hover {
+  background: var(--accent-primary);
+  color: #000;
+  border-color: var(--accent-primary);
+}
+
+/* ── STEP 4: EXECUTE & WOW SECTION ────────────────── */
+.cp-wow-section {
+  background: radial-gradient(circle at 50% 0%, rgba(96,165,250,0.15) 0%, transparent 70%), var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-32);
+}
+
+.cp-delta-display {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-48);
+}
+
+.cp-delta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cp-delta-arrow {
+  font-size: 3rem;
+  color: var(--text-tertiary);
+  animation: pulse-arrow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-arrow {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(10px); opacity: 1; }
+}
+
+.cp-tasks-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.cp-task-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-8);
+  padding: var(--sp-16) var(--sp-24);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cp-task-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.cp-task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cp-task-metrics {
+  display: flex;
+  gap: var(--sp-16);
+}
+
+.cp-task-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.cp-metric-val {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.cp-metric-val.impact { color: #10B981; }
+.cp-metric-val.effort { color: #FBBF24; }
+
+.cp-metric-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── UTILITIES ─────────────────────────────────────── */
+.cp-action-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sp-16);
+  margin-top: var(--sp-24);
+  padding-top: var(--sp-24);
+  border-top: 1px solid var(--border-light);
+}
+
+.cp-linear-metric {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cp-layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-32);
+  }
+  
+  .cp-sidebar {
+    position: static;
+  }
+  
+  .cp-stepper {
+    flex-direction: row;
+    border-left: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-left: 0;
+    padding-bottom: 12px;
+    gap: var(--sp-32);
+    overflow-x: auto;
+  }
+  
+  .cp-step-indicator {
+    left: auto;
+    top: -6px;
+  }
+  
+  .cp-step-title {
+    padding-left: 20px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  
+  .cp-split-analyze, .cp-split-diagnose, .cp-opt-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .cp-opt-col.original {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+  }
+  
+  .cp-bento-results {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cp-delta-display {
+    flex-direction: column;
+    gap: var(--sp-24);
+  }
+  
+  .cp-delta-arrow {
+    transform: rotate(90deg);
+    animation: pulse-arrow-down 2s infinite ease-in-out;
+  }
+  
+  @keyframes pulse-arrow-down {
+    0%, 100% { transform: rotate(90deg) translateX(0); opacity: 0.5; }
+    50% { transform: rotate(90deg) translateX(10px); opacity: 1; }
+  }
+  
+  .cp-task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-16);
+  }
+  
+  .cp-task-metrics {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .cp-task-metric {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .cp-page { padding-top: var(--sp-24); padding-bottom: var(--sp-32); }
+  .cp-wow-section { padding: var(--sp-24); }
+  .text-h1 { font-size: 2.5rem; }
+}

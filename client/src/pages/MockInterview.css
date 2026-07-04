@@ -1,0 +1,552 @@
+/* =========================================================
+   MockInterview.css — Phase P14 Premium Refresh
+   ========================================================= */
+
+.mi-page {
+  padding-top: var(--sp-48);
+  padding-bottom: var(--sp-64);
+  width: 100%;
+}
+
+/* ── LAYOUTS (Setup & Session) ────────────────────────── */
+.mi-split-layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: var(--sp-64);
+  width: 100%;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.mi-split-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mi-split-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mi-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  margin-top: var(--sp-32);
+}
+
+.mi-feature-item {
+  display: flex;
+  gap: var(--sp-16);
+  align-items: flex-start;
+}
+
+.mi-feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(20, 184, 166, 0.1);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+}
+
+.mi-feature-text h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.mi-feature-text p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.mi-setup, .mi-session, .mi-results, .mi-evaluating {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mi-setup-card {
+  width: 100%;
+  max-width: 540px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  border-radius: var(--radius-20);
+}
+
+.mi-field {
+  margin-bottom: var(--sp-24);
+}
+
+.mi-field label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-16);
+  font-weight: 500;
+}
+
+.mi-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-16);
+  width: 100%;
+}
+
+.mi-chip {
+  flex: 1 1 calc(33.333% - var(--sp-16));
+  min-width: 110px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  padding: 0 16px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--ease-spring);
+  text-align: center;
+}
+
+.mi-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.mi-chip.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+}
+
+.mi-error {
+  background: rgba(248, 113, 113, 0.1);
+  color: #F87171;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  margin-bottom: 24px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ── SESSION ────────────────────────────────────────── */
+.mi-session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.mi-timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background: rgba(96, 165, 250, 0.1);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.mi-question-card {
+  width: 100%;
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(20,20,20,0.5) 100%);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+}
+
+.mi-q-type {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(167, 139, 250, 0.1);
+  color: #A78BFA;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mi-answer-zone {
+  margin-top: 32px;
+}
+
+.mi-textarea {
+  width: 100%;
+  min-height: 200px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+.mi-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.1);
+  background: rgba(0,0,0,0.3);
+}
+
+.mi-session-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── EVALUATING ─────────────────────────────────────── */
+.mi-evaluating {
+  align-items: center;
+  margin-top: 100px;
+}
+
+.mi-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255,255,255,0.1);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+/* =========================================================
+   RESULTS FLOW (P14 OVERHAUL)
+   ========================================================= */
+
+/* 1. Verdict Banner */
+.mi-verdict-banner {
+  width: 100%;
+  border-radius: var(--radius-16);
+  padding: var(--sp-48);
+  margin-bottom: var(--sp-48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-16);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.mi-verdict-banner.strong-hire { background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0.02) 100%); border-color: rgba(16,185,129,0.2); }
+.mi-verdict-banner.hire { background: linear-gradient(135deg, rgba(52,211,153,0.1) 0%, rgba(52,211,153,0.02) 100%); border-color: rgba(52,211,153,0.2); }
+.mi-verdict-banner.borderline { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(251,191,36,0.02) 100%); border-color: rgba(251,191,36,0.2); }
+.mi-verdict-banner.no-hire { background: linear-gradient(135deg, rgba(248,113,113,0.1) 0%, rgba(248,113,113,0.02) 100%); border-color: rgba(248,113,113,0.2); }
+
+.mi-verdict-banner.strong-hire h1 { color: #10B981; }
+.mi-verdict-banner.hire h1 { color: #34D399; }
+.mi-verdict-banner.borderline h1 { color: #FBBF24; }
+.mi-verdict-banner.no-hire h1 { color: #F87171; }
+
+.mi-verdict-summary {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* 2. Score Breakdown */
+.mi-score-bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-24);
+  margin-bottom: var(--sp-48);
+}
+
+.mi-score-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.mi-score-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.mi-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mi-score-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.mi-score-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.mi-status-excellent { background: rgba(16,185,129,0.1); color: #10B981; }
+.mi-status-good { background: rgba(52,211,153,0.1); color: #34D399; }
+.mi-status-fair { background: rgba(251,191,36,0.1); color: #FBBF24; }
+.mi-status-poor { background: rgba(248,113,113,0.1); color: #F87171; }
+
+.mi-score-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mi-score-insight {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: auto;
+}
+
+/* 3. Mistake Replay Engine */
+.mi-replay-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  margin-bottom: var(--sp-48);
+}
+
+.mi-replay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-16);
+}
+
+.mi-replay-toggle {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mi-replay-toggle:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+.mi-replay-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mi-replay-q {
+  padding: var(--sp-24);
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.mi-replay-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border-light); /* Acts as border between columns */
+}
+
+.mi-replay-block {
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+.mi-replay-block.user-ans { background: linear-gradient(180deg, rgba(248,113,113,0.05) 0%, var(--bg-surface) 100%); }
+.mi-replay-block.problem { background: linear-gradient(180deg, rgba(251,191,36,0.05) 0%, var(--bg-surface) 100%); }
+.mi-replay-block.optimal { background: linear-gradient(180deg, rgba(16,185,129,0.05) 0%, var(--bg-surface) 100%); grid-column: span 2; }
+
+.mi-replay-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mi-replay-label.neutral { color: var(--text-secondary); }
+.mi-replay-label.red { color: #F87171; }
+.mi-replay-label.yellow { color: #FBBF24; }
+.mi-replay-label.green { color: #10B981; }
+
+.mi-replay-text {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+.mi-replay-text.secondary {
+  color: var(--text-secondary);
+}
+
+/* 4. Coaching Plan */
+.mi-coach-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-24);
+  margin-bottom: var(--sp-48);
+}
+
+.mi-coach-task {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.mi-coach-task:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.mi-coach-action {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.mi-coach-meta {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--sp-24);
+  margin-top: auto;
+  padding-top: var(--sp-16);
+  border-top: 1px dashed rgba(255,255,255,0.1);
+}
+
+.mi-coach-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mi-coach-metric-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.mi-coach-metric-val.impact { color: #10B981; }
+.mi-coach-metric-val.effort { color: #FBBF24; }
+
+.mi-coach-metric-lbl {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+/* 5. Success Simulation */
+.mi-wow-section {
+  background: radial-gradient(circle at 50% 0%, rgba(96,165,250,0.1) 0%, transparent 70%), var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-64) var(--sp-48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-48);
+  margin-bottom: var(--sp-48);
+}
+
+.mi-delta-display {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-48);
+}
+
+.mi-delta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mi-delta-arrow {
+  font-size: 3rem;
+  color: var(--text-tertiary);
+  animation: pulse-arrow 2s infinite ease-in-out;
+}
+
+.mi-sim-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-48);
+  width: 100%;
+  max-width: 600px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--sp-32);
+}
+
+.mi-sim-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── RESPONSIVE RULES ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mi-split-layout { grid-template-columns: 1fr; gap: var(--sp-48); }
+  .mi-split-left { text-align: center; align-items: center; }
+  .mi-feature-list { align-items: center; text-align: left; max-width: 500px; }
+  .mi-setup-card { max-width: 100%; }
+  
+  .mi-score-bento { grid-template-columns: repeat(2, 1fr); }
+  .mi-coach-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .mi-chip-group { justify-content: flex-start; }
+  .mi-replay-blocks { grid-template-columns: 1fr; }
+  .mi-replay-block.optimal { grid-column: span 1; }
+  
+  .mi-delta-display { flex-direction: column; gap: var(--sp-24); }
+  .mi-delta-arrow { transform: rotate(90deg); animation: pulse-arrow-down 2s infinite ease-in-out; }
+  .mi-sim-metrics { grid-template-columns: 1fr; gap: var(--sp-32); }
+}
+
+@media (max-width: 480px) {
+  .mi-split-layout { gap: var(--sp-32); }
+  .mi-page { padding-top: var(--sp-24); }
+  
+  .mi-score-bento { grid-template-columns: 1fr; }
+  .mi-wow-section { padding: var(--sp-32) var(--sp-16); }
+  .mi-verdict-banner { padding: var(--sp-32) var(--sp-16); }
+}

@@ -1,0 +1,129 @@
+.product-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-light);
+  padding: 24px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  border-width: 0 16px 16px 0;
+  border-style: solid;
+  border-color: var(--bg-main) var(--bg-main) var(--border-light) var(--border-light);
+  background: var(--bg-panel);
+  display: block;
+  width: 0;
+  transition: border-color 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-focus);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.product-card:hover::before {
+  border-bottom-color: var(--border-focus);
+  border-left-color: var(--border-focus);
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.company-name {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.role-title {
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.status-badge {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid currentColor;
+  background: rgba(255,255,255,0.05);
+}
+
+.status-applied { color: var(--text-secondary); }
+.status-interview { color: var(--status-yellow); }
+.status-selected { color: var(--status-green); }
+.status-rejected { color: var(--status-red); }
+
+.product-details {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.detail-label { color: var(--text-secondary); }
+.detail-value { color: var(--text-primary); font-weight: 500; }
+
+.deadline-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 8px;
+  border-left: 2px solid currentColor;
+}
+
+.deadline-overdue { color: var(--status-red); }
+.deadline-today { color: var(--status-yellow); }
+.deadline-soon { color: var(--accent-cyan); }
+.deadline-safe { color: var(--text-secondary); }
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn-action {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  padding: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+
+.btn-delete:hover {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--status-red);
+  border-color: var(--status-red);
+}

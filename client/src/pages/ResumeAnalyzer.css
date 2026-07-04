@@ -1,0 +1,449 @@
+/* =========================================================
+   ResumeAnalyzer.css — Phase R4 Flagship Perfection
+   ========================================================= */
+
+.ra-root {
+  min-height: 100vh;
+  padding: var(--sp-32) 0 var(--sp-64) 0;
+  background-color: var(--bg-main);
+}
+
+.ra-split {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: var(--sp-48);
+  align-items: flex-start;
+}
+
+/* ── LEFT PANE: WORKFLOW ───────────────────────────────── */
+.ra-sidebar {
+  position: sticky;
+  top: var(--sp-32);
+  display: flex;
+  flex-direction: column;
+}
+
+.ra-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.ra-input, .ra-textarea {
+  width: 100%;
+  font-family: inherit;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: var(--sp-12) var(--sp-16);
+  font-size: var(--text-body);
+  resize: vertical;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ra-input:focus, .ra-textarea:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--border-focus);
+  outline: none;
+}
+
+.ra-upload-zone {
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-16);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.ra-upload-zone:hover {
+  border-color: var(--accent-primary);
+  background: rgba(20, 184, 166, 0.05);
+}
+
+.ra-upload-icon {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: var(--sp-12);
+  border-radius: 50%;
+  display: flex;
+  color: var(--text-secondary);
+}
+
+.ra-trust-signals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  padding-top: var(--sp-24);
+  border-top: 1px solid var(--border-light);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+/* Sidebar Active/Processing States */
+.ra-sidebar-active {
+  display: flex;
+  flex-direction: column;
+}
+
+.ra-file-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-12);
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ra-pulse-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  padding: var(--sp-16);
+  border-radius: var(--radius-12);
+  background: rgba(20, 184, 166, 0.05);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  animation: pulseSubtle 1.5s infinite;
+}
+
+/* ── RIGHT PANE: MAIN ENGINE ────────────────────────────── */
+.ra-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* STATE 1: SHOWCASE (EMPTY) */
+.ra-showcase {
+  height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ra-showcase-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% -20%, rgba(20, 184, 166, 0.15), transparent 60%);
+  z-index: 0;
+}
+
+.ra-showcase-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ra-showcase-icon {
+  margin-bottom: var(--sp-24);
+  filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.2));
+}
+
+/* STATE 2: TERMINAL (PROCESSING) */
+.ra-terminal {
+  height: 600px;
+  background: #000; /* Pure black for terminal feel */
+  border-color: rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+}
+
+.ra-terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--sp-16);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-tertiary);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+.terminal-dots span:nth-child(1) { background: #EF4444; }
+.terminal-dots span:nth-child(2) { background: #F59E0B; }
+.terminal-dots span:nth-child(3) { background: #10B981; }
+
+.ra-terminal-body {
+  flex: 1;
+  padding: var(--sp-24) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.terminal-log {
+  color: #10B981; /* Matrix green */
+  font-size: 14px;
+}
+
+.terminal-cursor {
+  color: #10B981;
+  animation: pulseSubtle 1s infinite;
+}
+
+/* STATE 3: RESULTS ─────────────────────────────────────── */
+.ra-results-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section 1: Massive ATS Hero */
+.ra-hero-massive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-48) var(--sp-32);
+  background: linear-gradient(180deg, rgba(20, 184, 166, 0.05) 0%, var(--bg-card) 100%);
+  border-color: rgba(20, 184, 166, 0.2);
+}
+
+.ra-hero-massive-radial {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 30px rgba(20, 184, 166, 0.2));
+}
+
+.ra-hero-massive-radial svg {
+  position: absolute;
+  top: 0; left: 0;
+}
+
+.radial-content {
+  text-align: center;
+  z-index: 1;
+}
+
+.ra-hero-massive-stats {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  margin-top: var(--sp-48);
+  justify-content: space-between;
+}
+
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Section 2: Why This Score? */
+.ra-why-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-24);
+}
+
+.ra-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+}
+
+.ra-breakdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+.breakdown-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ra-waterfall-flow {
+  display: flex;
+  flex-direction: column;
+}
+
+.waterfall-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-12) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.waterfall-row:last-child { border-bottom: none; }
+.waterfall-row.base { padding-top: 0; }
+.waterfall-row.final { padding-bottom: 0; border-bottom: none; border-top: 1px solid var(--border-light); margin-top: var(--sp-12); padding-top: var(--sp-16); }
+
+.waterfall-row.positive span:last-child { color: #10B981; }
+.waterfall-row.negative span:last-child { color: #EF4444; }
+
+.font-600 { font-weight: 600; }
+.text-primary { color: var(--text-primary); }
+
+/* Section 3: Missing Skills */
+.ra-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-24);
+}
+
+.skill-chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+}
+
+.skill-chip {
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+.skill-chip.critical { background: rgba(239, 68, 68, 0.15); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.3); }
+.skill-chip.important { background: rgba(59, 130, 246, 0.15); color: #93C5FD; border: 1px solid rgba(59, 130, 246, 0.3); }
+.mb-12 { margin-bottom: var(--sp-12); }
+.mb-16 { margin-bottom: var(--sp-16); }
+.mb-8 { margin-bottom: var(--sp-8); }
+
+/* Section 4: Action Plan */
+.ra-action-plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.ra-action-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.action-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+}
+
+.action-badge {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.action-meta {
+  display: flex;
+  gap: var(--sp-32);
+  padding: var(--sp-12) 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.action-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+/* Section 5: Recruiter Simulation */
+.ra-sim-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-24);
+}
+
+.ra-sim-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  color: var(--text-secondary);
+}
+
+.flex-grow { flex-grow: 1; }
+
+/* ── RESPONSIVE RULES ──────────────────────────────────── */
+@media (max-width: 1280px) {
+  .ra-split {
+    grid-template-columns: 300px 1fr;
+    gap: var(--sp-32);
+  }
+}
+
+@media (max-width: 1024px) {
+  .ra-split {
+    grid-template-columns: 1fr;
+    gap: var(--sp-48);
+  }
+  
+  .ra-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .ra-why-split { grid-template-columns: 1fr; }
+  .ra-skills-grid { grid-template-columns: 1fr; }
+  .ra-sim-layout { grid-template-columns: 1fr; }
+  
+  .ra-hero-massive-stats {
+    flex-direction: column;
+    gap: var(--sp-16);
+    margin-top: var(--sp-32);
+  }
+}
+
+@media (max-width: 480px) {
+  .ra-hero-massive-radial {
+    transform: scale(0.85);
+  }
+  .action-meta {
+    flex-direction: column;
+    gap: var(--sp-12);
+  }
+}

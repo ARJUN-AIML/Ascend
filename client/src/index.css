@@ -1,0 +1,313 @@
+:root {
+  /* Color Palette - Linear/Cursor Inspired */
+  --bg-main: #050816;
+  --bg-surface: #0F172A;
+  --bg-card: #111827;
+  
+  --accent-primary: #14B8A6;
+  --accent-secondary: #3B82F6;
+  --accent-primary-hover: #0D9488;
+  --accent-secondary-hover: #2563EB;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(20, 184, 166, 0.3);
+  
+  /* Shadow System (Soft glow, no heavy shadows) */
+  --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --shadow-heavy: 0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --glow-subtle: 0 0 15px rgba(20, 184, 166, 0.1);
+  
+  /* Radius System (Strict 12, 16, 20) */
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+
+  /* Spacing Scale (Strict Ascend Protocol) */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  
+  /* Typography System */
+  --text-hero: 56px;
+  --text-h1: 40px;
+  --text-h2: 32px;
+  --text-h3: 24px;
+  --text-body-large: 18px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-caption: 12px;
+
+  /* Motion System */
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 150ms var(--ease-smooth);
+  --transition-base: 250ms var(--ease-smooth);
+  --transition-slow: 400ms var(--ease-smooth);
+}
+
+/* =======================================
+   CONTAINER & ALIGNMENT SYSTEM
+======================================= */
+.ascend-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: var(--sp-32);
+}
+
+@media (max-width: 1024px) {
+  .ascend-container {
+    padding-inline: var(--sp-24);
+  }
+}
+
+@media (max-width: 768px) {
+  .ascend-container {
+    padding-inline: var(--sp-24);
+  }
+}
+
+@media (max-width: 480px) {
+  .ascend-container {
+    padding-inline: var(--sp-16);
+  }
+}
+
+/* Strict Tap Targets */
+@media (max-width: 768px) {
+  button, input, select, .tap-target {
+    min-height: 48px;
+  }
+}
+
+/* =======================================
+   BASE RESET
+======================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 0; /* Global mobile safety */
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100dvh;
+  font-size: var(--text-body);
+  overflow-wrap: anywhere;
+  word-break: break-word; /* Global mobile safety */
+}
+
+img, svg, canvas, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =======================================
+   TYPOGRAPHY HIERARCHY
+======================================= */
+h1, .text-h1 { font-size: var(--text-h1); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+h2, .text-h2 { font-size: var(--text-h2); font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+h3, .text-h3 { font-size: var(--text-h3); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+.text-hero { font-size: var(--text-hero); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.text-large { font-size: var(--text-body-large); line-height: 1.5; }
+.text-small { font-size: var(--text-small); line-height: 1.5; }
+.text-caption { font-size: var(--text-caption); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--accent-primary-hover);
+}
+
+/* =======================================
+   VISUAL RHYTHM CLASSES
+======================================= */
+.rhythm-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+}
+
+.rhythm-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-24);
+}
+
+/* =======================================
+   FORMS & BUTTONS
+======================================= */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: var(--text-body);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: var(--sp-12) var(--sp-16);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--border-focus);
+  outline: none;
+}
+
+.btn-primary, .btn-secondary, .btn-ghost, .btn-danger {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: var(--text-small);
+  padding: var(--sp-12) var(--sp-24);
+  border-radius: var(--radius-12);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #000; /* High contrast text on teal */
+  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2); 
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(20, 184, 166, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-card);
+  border-color: var(--border-focus);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #F87171;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: rgba(239, 68, 68, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active:not(:disabled),
+.btn-secondary:active:not(:disabled),
+.btn-ghost:active:not(:disabled),
+.btn-danger:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =======================================
+   UNIVERSAL CARD SYSTEM
+======================================= */
+.premium-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-20);
+  padding: var(--sp-24);
+  box-shadow: var(--shadow-light);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.premium-card.hoverable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-heavy);
+}
+
+/* =======================================
+   MOTION SYSTEM (PREMIUM KEYFRAMES)
+======================================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerReveal {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sweepRing {
+  from { stroke-dashoffset: 283; }
+  to { stroke-dashoffset: var(--target-offset); }
+}
+
+@keyframes fillProgress {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+@keyframes graphDraw {
+  from { opacity: 0; transform: scaleY(0.9); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.animate-fade-up { animation: fadeUp 0.6s var(--ease-smooth) forwards; }
+.animate-stagger-1 { animation: staggerReveal 0.5s var(--ease-smooth) 0.1s forwards; opacity: 0; }
+.animate-stagger-2 { animation: staggerReveal 0.5s var(--ease-smooth) 0.2s forwards; opacity: 0; }
+.animate-stagger-3 { animation: staggerReveal 0.5s var(--ease-smooth) 0.3s forwards; opacity: 0; }
+.animate-stagger-4 { animation: staggerReveal 0.5s var(--ease-smooth) 0.4s forwards; opacity: 0; }
+.animate-stagger-5 { animation: staggerReveal 0.5s var(--ease-smooth) 0.5s forwards; opacity: 0; }
+
+.hover-lift { transition: transform var(--transition-base), box-shadow var(--transition-base); }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-heavy); }

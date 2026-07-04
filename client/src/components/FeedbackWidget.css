@@ -1,0 +1,36 @@
+.feedback-widget {
+  padding: 24px;
+  max-width: 400px;
+  margin: 24px auto;
+  border-radius: 12px;
+  background: var(--bg-surface-glass);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-options {
+  display: flex;
+  gap: 12px;
+}
+
+.feedback-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feedback-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.feedback-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--bg-main);
+}

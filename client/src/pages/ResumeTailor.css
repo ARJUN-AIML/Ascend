@@ -1,0 +1,358 @@
+/* =========================================================
+   ResumeTailor.css — Resume Tailoring Engine
+   ========================================================= */
+
+.rt-page {
+  padding-top: var(--sp-48);
+  padding-bottom: var(--sp-64);
+}
+
+.rt-hero {
+  text-align: center;
+  margin-bottom: var(--sp-48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-12);
+}
+
+.rt-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #FCA5A5;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  margin-bottom: var(--sp-24);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── INPUT SECTION ───────────────────────────────────── */
+.rt-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-32);
+  margin-bottom: var(--sp-32);
+}
+
+.rt-input-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-24);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  min-height: 400px;
+}
+
+.rt-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-16);
+}
+
+.rt-upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.rt-textarea {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-16);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+  min-height: 300px;
+}
+
+.rt-textarea:focus {
+  border-color: var(--accent-primary);
+}
+
+.rt-action-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--sp-32);
+}
+
+.rt-tailor-btn {
+  padding: 16px 48px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rt-tailor-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(20, 184, 166, 0.4);
+}
+
+.rt-tailor-btn.pulsing {
+  animation: tailorPulse 1.5s infinite;
+  opacity: 0.8;
+  cursor: wait;
+}
+
+@keyframes tailorPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.98); opacity: 0.6; }
+  100% { transform: scale(1); }
+}
+
+/* ── RESULTS DASHBOARD ─────────────────────────────── */
+.rt-results-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-32);
+}
+
+.rt-results-top {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  gap: var(--sp-32);
+}
+
+.rt-score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-48) var(--sp-24);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  text-align: center;
+}
+
+.rt-keyword-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-24);
+}
+
+.rt-list-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+}
+
+.rt-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid currentColor;
+}
+
+.rt-badge.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.rt-badge.danger {
+  background: rgba(248, 113, 113, 0.1);
+  color: #F87171;
+}
+
+/* ── BULLET REWRITES ───────────────────────────────── */
+.rt-bullets-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-32);
+}
+
+.rt-bullets-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+}
+
+.rt-bullet-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-16);
+}
+
+.rt-bullet-col {
+  padding: var(--sp-24);
+  border-radius: var(--radius-12);
+  border: 1px solid var(--border-light);
+  position: relative;
+}
+
+.rt-bullet-col.original {
+  background: var(--bg-surface);
+}
+
+.rt-bullet-col.improved {
+  background: rgba(20, 184, 166, 0.05);
+  border-color: rgba(20, 184, 166, 0.3);
+}
+
+.rt-bullet-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--sp-12);
+  color: var(--text-secondary);
+}
+
+.rt-bullet-label.highlight {
+  color: var(--accent-primary);
+}
+
+.rt-bullet-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.rt-copy-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rt-copy-btn:hover {
+  background: var(--accent-primary);
+  color: #000;
+  border-color: var(--accent-primary);
+}
+
+/* ── RECOMMENDATIONS ───────────────────────────────── */
+.rt-recommendations {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: var(--sp-32);
+}
+
+.rt-rec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+.rt-rec-list li {
+  position: relative;
+  padding-left: var(--sp-24);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.rt-rec-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+/* ── Radial Gauge ──────────────────────────────────────── */
+.rt-radial-gauge {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rt-radial-gauge .rt-gauge-svg {
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rt-radial-gauge .rt-gauge-bg {
+  fill: none;
+  stroke: var(--bg-surface);
+}
+
+.rt-radial-gauge .rt-gauge-progress {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rt-radial-gauge .rt-gauge-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.rt-radial-gauge .rt-gauge-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.rt-radial-gauge .rt-gauge-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .rt-results-top { grid-template-columns: 1fr; }
+  .rt-bullet-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .rt-input-grid { grid-template-columns: 1fr; }
+  .rt-keyword-lists { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .rt-hero { padding: 0 var(--sp-16); }
+  .rt-score-card { padding: var(--sp-32) var(--sp-16); }
+  .rt-tailor-btn { width: 100%; }
+}

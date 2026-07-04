@@ -1,0 +1,417 @@
+/* =========================================================
+   SkillGapRadar.css — Phase P21 Premium Density Refresh
+   ========================================================= */
+
+.sgr-root {
+  min-height: 100vh;
+}
+
+/* ── STATE 1: INPUT ────────────────────────────────────── */
+.sgr-input-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: var(--sp-32);
+}
+
+.sgr-input-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-12);
+}
+
+.sgr-icon-badge {
+  background: rgba(20, 184, 166, 0.1);
+  padding: var(--sp-12);
+  border-radius: var(--radius-12);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  display: flex;
+}
+
+.sgr-input-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-16);
+  padding: 24px;
+}
+
+.sgr-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sgr-input {
+  width: 100%;
+  font-family: inherit;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 12px;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.sgr-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--border-focus);
+  outline: none;
+}
+
+.sgr-execute-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+/* ── STATE 2: PROCESSING ───────────────────────────────── */
+.sgr-processing-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.sgr-pulse-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px dashed rgba(20, 184, 166, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 8s linear infinite;
+}
+
+.sgr-pulse-inner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 20px var(--accent-primary);
+  animation: pulseSubtle 1.5s infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* ── STATE 3: RESULTS (Bento Layout) ────────────────────── */
+
+/* Section 1: Top Bento Layout */
+.sgr-top-bento {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.sgr-bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sgr-bento-card.hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Section 2: Radar Split */
+.sgr-radar-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal height columns */
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.sgr-radar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 16px;
+  height: 360px; /* Force strict height */
+}
+
+.sgr-breakdown-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 24px;
+  justify-content: center;
+  height: 360px; /* Equal height */
+}
+
+.sgr-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Tighter gap */
+}
+
+.sgr-breakdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sgr-breakdown-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sgr-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sgr-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  width: 0%;
+  animation: fillProgress 1s var(--ease-smooth) forwards;
+}
+
+/* Section 3: Smart Missing Skills */
+.sgr-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for higher density */
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.sgr-skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 16px; /* Compact padding */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.sgr-skill-card:hover {
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.sgr-skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sgr-skill-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255,255,255,0.1);
+}
+
+.sgr-skill-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sgr-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.sgr-badge.critical { background: rgba(239, 68, 68, 0.1); color: #FCA5A5; }
+.sgr-badge.major { background: rgba(251, 191, 36, 0.1); color: #FCD34D; }
+.sgr-badge.minor { background: rgba(96, 165, 250, 0.1); color: #93C5FD; }
+.sgr-badge.optional { background: rgba(255, 255, 255, 0.1); color: #D1D5DB; }
+
+/* Section 4: Execution Roadmap */
+.sgr-roadmap-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.sgr-phase-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sgr-phase-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent-primary);
+}
+
+.sgr-phase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sgr-phase-pill {
+  background: rgba(20, 184, 166, 0.1);
+  color: var(--accent-primary);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sgr-phase-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sgr-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sgr-task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.sgr-task-item svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sgr-phase-output {
+  background: var(--bg-surface);
+  border-radius: var(--radius-8);
+  padding: 12px 16px;
+  border: 1px solid var(--border-light);
+  display: inline-flex;
+}
+
+/* Section 5: Impact Simulation (WOW Section) */
+.sgr-wow-section {
+  background: radial-gradient(circle at 50% 0%, rgba(16,185,129,0.08) 0%, transparent 60%), var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-12);
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.sgr-wow-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sgr-delta-display {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sgr-delta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sgr-delta-arrow {
+  font-size: 2rem;
+  color: var(--text-tertiary);
+}
+
+.sgr-sim-metrics {
+  display: flex;
+  gap: 32px;
+}
+
+.sgr-sim-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+/* ── RESPONSIVE RULES ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .sgr-top-bento { grid-template-columns: repeat(2, 1fr); }
+  .sgr-bento-card.hero { grid-column: span 2; }
+  .sgr-skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .sgr-wow-section { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 768px) {
+  .sgr-top-bento { margin-bottom: 32px; gap: 16px; }
+  .sgr-radar-split { grid-template-columns: 1fr; margin-bottom: 32px; gap: 16px; }
+  .sgr-breakdown-container { height: auto; padding: 24px; }
+  .sgr-radar-container { height: auto; min-height: 300px; }
+  
+  .sgr-skills-grid { grid-template-columns: 1fr; margin-bottom: 32px; gap: 16px; }
+  .sgr-roadmap-list { grid-template-columns: 1fr; margin-bottom: 32px; gap: 16px; }
+  
+  .sgr-wow-section { padding: 24px; margin-bottom: 32px; gap: 24px; }
+  .sgr-sim-metrics { flex-direction: column; gap: 16px; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; }
+}
+
+@media (max-width: 480px) {
+  .sgr-top-bento { grid-template-columns: 1fr; margin-bottom: 24px; }
+  .sgr-bento-card.hero { grid-column: span 1; flex-direction: column; align-items: flex-start; gap: 16px; }
+  
+  .sgr-radar-split { margin-bottom: 24px; }
+  .sgr-breakdown-container { padding: 16px; }
+  
+  .sgr-skills-grid { margin-bottom: 24px; }
+  .sgr-roadmap-list { margin-bottom: 24px; }
+  
+  .sgr-phase-card { padding: 16px; }
+  
+  .sgr-wow-section { padding: 16px; margin-bottom: 24px; }
+  .sgr-delta-display { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .sgr-delta-arrow { transform: rotate(90deg); }
+}
